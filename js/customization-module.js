@@ -100,11 +100,9 @@ class CustomizationModule {
 
     if (currentSection) {
       currentSection.classList.remove('active');
-      currentSection.style.display = 'none';
     }
 
     if (nextSection) {
-      nextSection.style.display = '';
       // Trigger reflow for animation
       void nextSection.offsetWidth;
       nextSection.classList.add('active');
@@ -386,9 +384,19 @@ class CustomizationModule {
     // Reset prompt buttons
     document.querySelectorAll('.prompt-btn').forEach(btn => btn.classList.remove('active'));
 
-    // Switch back to knowledge tab
-    this.currentSubSection = '';
-    this.switchTab('knowledge');
+    // Hide all sub-sections, then show knowledge
+    document.querySelectorAll('.sub-section').forEach(s => s.classList.remove('active'));
+    const knowledgeSection = document.querySelector('.sub-section[data-section="knowledge"]');
+    if (knowledgeSection) knowledgeSection.classList.add('active');
+
+    // Reset tabs
+    document.querySelectorAll('.custom-tab').forEach(tab => {
+      const isKnowledge = tab.getAttribute('data-tab') === 'knowledge';
+      tab.classList.toggle('active', isKnowledge);
+      tab.setAttribute('aria-pressed', isKnowledge ? 'true' : 'false');
+    });
+
+    this.currentSubSection = 'knowledge';
   }
 }
 
