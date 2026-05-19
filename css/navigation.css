@@ -1,0 +1,167 @@
+/* ===========================
+   Navigation and Progress Bar Styles
+   Bottom navigation bar, module sections layout,
+   and progress indicators.
+   =========================== */
+
+/* --- Module Sections Layout --- */
+
+.app-container {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 100vh;
+}
+
+.module-section {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+  overflow-y: auto;
+  padding-bottom: 80px; /* space for bottom nav */
+}
+
+.module-section.active {
+  display: block;
+  transform: translateX(0);
+}
+
+/* --- Fixed Bottom Navigation Bar --- */
+
+#bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 64px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #ffffff;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.08);
+  z-index: 1000;
+  padding: 0 16px;
+}
+
+/* --- Navigation Items --- */
+
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 8px 12px;
+  border-radius: 12px;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.nav-item:hover {
+  background-color: rgba(74, 144, 217, 0.08);
+  transform: scale(1.08);
+}
+
+.nav-item:active {
+  transform: scale(0.95);
+}
+
+/* --- Module Icons --- */
+
+.nav-icon {
+  font-size: 26px;
+  line-height: 1;
+  text-align: center;
+}
+
+/* --- Progress Indicators --- */
+
+.nav-indicator {
+  display: block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 2px solid var(--primary-blue);
+  background-color: transparent;
+  transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+}
+
+.nav-indicator.visited {
+  background-color: var(--primary-blue);
+  border-color: var(--primary-blue);
+}
+
+.nav-indicator.current {
+  background-color: var(--accent-orange);
+  border-color: var(--accent-orange);
+  animation: pulse-indicator 1.5s ease-in-out infinite;
+}
+
+/* Pulse animation for the current module indicator */
+@keyframes pulse-indicator {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.4);
+    opacity: 0.7;
+  }
+}
+
+/* --- Sound Toggle Button --- */
+
+.sound-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(74, 144, 217, 0.1);
+  border: 2px solid var(--primary-blue);
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+  font-size: 1.2rem;
+  line-height: 1;
+  padding: 0;
+}
+
+.sound-toggle:hover {
+  transform: scale(1.1);
+  background: rgba(74, 144, 217, 0.2);
+}
+
+.sound-toggle:active {
+  transform: scale(0.92);
+}
+
+.sound-toggle[aria-pressed="true"] {
+  background: var(--primary-blue);
+  border-color: var(--primary-blue);
+}
+
+/* --- Laptop Viewport Adjustments --- */
+
+@media (max-width: 1366px) {
+  #bottom-nav {
+    height: 56px;
+  }
+
+  .nav-icon {
+    font-size: 22px;
+  }
+
+  .nav-indicator {
+    width: 8px;
+    height: 8px;
+  }
+
+  .sound-toggle {
+    width: 36px;
+    height: 36px;
+    font-size: 1rem;
+  }
+}

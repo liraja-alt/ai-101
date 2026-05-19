@@ -1,0 +1,141 @@
+/* ===========================
+   AI Education Website
+   Global Styles, Variables & Typography
+   =========================== */
+
+/* CSS Custom Properties (Color Palette & Design Tokens) */
+:root {
+  --primary-blue: #4A90D9;
+  --secondary-purple: #7B68EE;
+  --accent-orange: #FF8C42;
+  --accent-green: #4CAF50;
+  --accent-pink: #FF6B9D;
+  --background-light: #F8F9FF;
+  --text-dark: #2D3436;
+  --text-light: #FFFFFF;
+  --success-green: #66BB6A;
+  --card-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* CSS Reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Base Body Styles */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-size: 20px;
+  line-height: 1.6;
+  color: var(--text-dark);
+  background-color: var(--background-light);
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* Typography */
+h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.interactive-text {
+  font-size: 1.3rem;
+}
+
+/* ===========================
+   Viewport Optimization
+   Primary: 1920x1080 (projector)
+   Secondary: 1366x768 (laptop)
+   =========================== */
+
+/* Constrain module content on very wide screens */
+.module-content {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Laptop viewport adjustments (1366x768) */
+@media (max-width: 1366px) {
+  body {
+    font-size: 18px;
+  }
+
+  h1 {
+    font-size: 2.2rem;
+  }
+
+  h2 {
+    font-size: 1.75rem;
+  }
+
+  h3 {
+    font-size: 1.3rem;
+  }
+
+  .interactive-text {
+    font-size: 1.15rem;
+  }
+
+  .module-content {
+    max-width: 1200px;
+  }
+}
+
+/* ===========================
+   Accessibility: Contrast Fixes
+   Ensure 4.5:1 contrast for text on colored backgrounds
+   =========================== */
+
+/* Orange and pink backgrounds need slightly darker shades for white text */
+.landing-card--usage {
+  background-color: #E07530;
+}
+
+.landing-card--customization {
+  background-color: #E0557F;
+}

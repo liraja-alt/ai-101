@@ -1,0 +1,801 @@
+<!-- This website is fully offline-capable. No external CDN, fonts, or API dependencies. All assets are inline or local. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How Does AI Work?</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/navigation.css">
+  <link rel="stylesheet" href="css/modules.css">
+  <link rel="stylesheet" href="css/interactions.css">
+  <link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+  <div class="app-container">
+    <section id="landing" class="module-section active">
+      <div class="landing-content">
+        <h1 class="landing-title">How Does AI Work?</h1>
+        <p class="landing-subtitle">Let's discover together!</p>
+
+        <!-- Animated Robot Mascot -->
+        <div class="landing-mascot animate-float">
+          <svg width="160" height="200" viewBox="0 0 160 200" xmlns="http://www.w3.org/2000/svg" aria-label="Friendly robot mascot">
+            <!-- Antenna -->
+            <line x1="80" y1="18" x2="80" y2="8" stroke="#7B68EE" stroke-width="3" stroke-linecap="round"/>
+            <circle cx="80" cy="5" r="5" fill="#FF8C42"/>
+            <!-- Head -->
+            <rect x="45" y="18" width="70" height="60" rx="20" fill="#4A90D9"/>
+            <!-- Eyes -->
+            <circle cx="65" cy="45" r="9" fill="#FFFFFF"/>
+            <circle cx="95" cy="45" r="9" fill="#FFFFFF"/>
+            <circle cx="67" cy="46" r="4" fill="#2D3436"/>
+            <circle cx="97" cy="46" r="4" fill="#2D3436"/>
+            <!-- Smile -->
+            <path d="M65 60 Q80 72 95 60" stroke="#FFFFFF" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <!-- Neck -->
+            <rect x="72" y="78" width="16" height="10" rx="4" fill="#7B68EE"/>
+            <!-- Body -->
+            <rect x="40" y="88" width="80" height="70" rx="16" fill="#7B68EE"/>
+            <!-- Chest light -->
+            <circle cx="80" cy="118" r="10" fill="#FF8C42" opacity="0.9"/>
+            <circle cx="80" cy="118" r="5" fill="#FFD700"/>
+            <!-- Arms -->
+            <rect x="20" y="95" width="18" height="45" rx="9" fill="#4A90D9"/>
+            <rect x="122" y="95" width="18" height="45" rx="9" fill="#4A90D9"/>
+            <!-- Hands -->
+            <circle cx="29" cy="143" r="9" fill="#4A90D9"/>
+            <circle cx="131" cy="143" r="9" fill="#4A90D9"/>
+            <!-- Legs -->
+            <rect x="55" y="158" width="18" height="30" rx="9" fill="#7B68EE"/>
+            <rect x="87" y="158" width="18" height="30" rx="9" fill="#7B68EE"/>
+            <!-- Feet -->
+            <ellipse cx="64" cy="192" rx="14" ry="8" fill="#4A90D9"/>
+            <ellipse cx="96" cy="192" rx="14" ry="8" fill="#4A90D9"/>
+          </svg>
+        </div>
+
+        <!-- Module Cards Grid -->
+        <div class="landing-cards">
+          <button class="landing-card landing-card--training" onclick="navigateToModule('training')">
+            <span class="landing-card__icon">🧠</span>
+            <h3 class="landing-card__title">How AI Learns</h3>
+            <p class="landing-card__desc">Teach a robot to recognize things!</p>
+          </button>
+          <button class="landing-card landing-card--resources" onclick="navigateToModule('resources')">
+            <span class="landing-card__icon">💻</span>
+            <h3 class="landing-card__title">Super Computers</h3>
+            <p class="landing-card__desc">See why AI needs so much power!</p>
+          </button>
+          <button class="landing-card landing-card--usage" onclick="navigateToModule('usage')">
+            <span class="landing-card__icon">🤖</span>
+            <h3 class="landing-card__title">AI All Around Us</h3>
+            <p class="landing-card__desc">Find AI hiding in everyday life!</p>
+          </button>
+          <button class="landing-card landing-card--customization" onclick="navigateToModule('customization')">
+            <span class="landing-card__icon">🎨</span>
+            <h3 class="landing-card__title">Make AI Your Own</h3>
+            <p class="landing-card__desc">Customize how AI talks and thinks!</p>
+          </button>
+        </div>
+      </div>
+    </section>
+    <section id="training" class="module-section">
+      <div class="module-content training-layout">
+        <h2 class="module-title">How AI Learns</h2>
+        <p class="module-subtitle">Teach the robot by giving it examples!</p>
+
+        <div class="training-columns">
+          <!-- Left column: Robot + Confidence Bar -->
+          <div class="training-left">
+            <!-- Robot Character with Three Visual States -->
+            <div class="training-robot">
+              <!-- Confused State (0-30% confidence) -->
+              <svg class="robot-confused" width="150" height="180" viewBox="0 0 150 180" xmlns="http://www.w3.org/2000/svg" aria-label="Confused robot with question marks">
+                <!-- Question marks -->
+                <text x="25" y="20" font-size="20" fill="#FF8C42">?</text>
+                <text x="115" y="25" font-size="16" fill="#7B68EE">?</text>
+                <text x="70" y="15" font-size="22" fill="#FF6B9D">?</text>
+                <!-- Antenna -->
+                <line x1="75" y1="38" x2="75" y2="28" stroke="#7B68EE" stroke-width="3" stroke-linecap="round"/>
+                <circle cx="75" cy="25" r="4" fill="#FF8C42"/>
+                <!-- Head -->
+                <rect x="40" y="38" width="70" height="55" rx="18" fill="#4A90D9"/>
+                <!-- Eyes (confused - uneven) -->
+                <circle cx="60" cy="60" r="8" fill="#FFFFFF"/>
+                <circle cx="90" cy="60" r="8" fill="#FFFFFF"/>
+                <circle cx="62" cy="62" r="4" fill="#2D3436"/>
+                <circle cx="88" cy="58" r="4" fill="#2D3436"/>
+                <!-- Confused mouth (wavy) -->
+                <path d="M60 78 Q68 74 75 78 Q82 82 90 78" stroke="#FFFFFF" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                <!-- Neck -->
+                <rect x="67" y="93" width="16" height="8" rx="4" fill="#7B68EE"/>
+                <!-- Body -->
+                <rect x="35" y="101" width="80" height="50" rx="14" fill="#7B68EE"/>
+                <!-- Chest light (dim) -->
+                <circle cx="75" cy="122" r="8" fill="#FF8C42" opacity="0.4"/>
+                <!-- Arms (raised in confusion) -->
+                <rect x="15" y="100" width="16" height="35" rx="8" fill="#4A90D9" transform="rotate(-15 23 100)"/>
+                <rect x="119" y="100" width="16" height="35" rx="8" fill="#4A90D9" transform="rotate(15 127 100)"/>
+                <!-- Hands -->
+                <circle cx="18" cy="132" r="7" fill="#4A90D9"/>
+                <circle cx="132" cy="132" r="7" fill="#4A90D9"/>
+                <!-- Legs -->
+                <rect x="52" y="151" width="16" height="22" rx="8" fill="#7B68EE"/>
+                <rect x="82" y="151" width="16" height="22" rx="8" fill="#7B68EE"/>
+                <!-- Feet -->
+                <ellipse cx="60" cy="175" rx="12" ry="6" fill="#4A90D9"/>
+                <ellipse cx="90" cy="175" rx="12" ry="6" fill="#4A90D9"/>
+              </svg>
+
+              <!-- Thinking State (30-70% confidence) -->
+              <svg class="robot-thinking" width="150" height="180" viewBox="0 0 150 180" xmlns="http://www.w3.org/2000/svg" aria-label="Thinking robot with thought bubble" style="display:none;">
+                <!-- Thought bubble -->
+                <circle cx="120" cy="18" r="12" fill="#F0F0FF" stroke="#7B68EE" stroke-width="1.5"/>
+                <circle cx="108" cy="32" r="6" fill="#F0F0FF" stroke="#7B68EE" stroke-width="1"/>
+                <circle cx="100" cy="40" r="3" fill="#F0F0FF" stroke="#7B68EE" stroke-width="1"/>
+                <text x="113" y="23" font-size="14" fill="#7B68EE" text-anchor="middle">💡</text>
+                <!-- Antenna -->
+                <line x1="75" y1="38" x2="75" y2="28" stroke="#7B68EE" stroke-width="3" stroke-linecap="round"/>
+                <circle cx="75" cy="25" r="4" fill="#FF8C42"/>
+                <!-- Head -->
+                <rect x="40" y="38" width="70" height="55" rx="18" fill="#4A90D9"/>
+                <!-- Eyes (thoughtful - looking up) -->
+                <circle cx="60" cy="60" r="8" fill="#FFFFFF"/>
+                <circle cx="90" cy="60" r="8" fill="#FFFFFF"/>
+                <circle cx="62" cy="57" r="4" fill="#2D3436"/>
+                <circle cx="92" cy="57" r="4" fill="#2D3436"/>
+                <!-- Thinking mouth (small o) -->
+                <circle cx="75" cy="78" r="5" fill="none" stroke="#FFFFFF" stroke-width="2.5"/>
+                <!-- Neck -->
+                <rect x="67" y="93" width="16" height="8" rx="4" fill="#7B68EE"/>
+                <!-- Body -->
+                <rect x="35" y="101" width="80" height="50" rx="14" fill="#7B68EE"/>
+                <!-- Chest light (medium glow) -->
+                <circle cx="75" cy="122" r="8" fill="#FF8C42" opacity="0.7"/>
+                <circle cx="75" cy="122" r="4" fill="#FFD700" opacity="0.6"/>
+                <!-- Arms (one raised to chin) -->
+                <rect x="15" y="105" width="16" height="35" rx="8" fill="#4A90D9"/>
+                <rect x="119" y="98" width="16" height="35" rx="8" fill="#4A90D9" transform="rotate(-10 127 98)"/>
+                <!-- Hands -->
+                <circle cx="23" cy="143" r="7" fill="#4A90D9"/>
+                <circle cx="127" cy="128" r="7" fill="#4A90D9"/>
+                <!-- Legs -->
+                <rect x="52" y="151" width="16" height="22" rx="8" fill="#7B68EE"/>
+                <rect x="82" y="151" width="16" height="22" rx="8" fill="#7B68EE"/>
+                <!-- Feet -->
+                <ellipse cx="60" cy="175" rx="12" ry="6" fill="#4A90D9"/>
+                <ellipse cx="90" cy="175" rx="12" ry="6" fill="#4A90D9"/>
+              </svg>
+
+              <!-- Happy State (70-100% confidence) -->
+              <svg class="robot-happy" width="150" height="180" viewBox="0 0 150 180" xmlns="http://www.w3.org/2000/svg" aria-label="Happy robot with stars and sparkles" style="display:none;">
+                <!-- Stars and sparkles -->
+                <polygon points="20,15 23,22 30,22 24,27 26,34 20,30 14,34 16,27 10,22 17,22" fill="#FFD700"/>
+                <polygon points="130,10 132,15 137,15 133,18 134,23 130,20 126,23 127,18 123,15 128,15" fill="#FF8C42"/>
+                <polygon points="15,40 17,44 21,44 18,46 19,50 15,48 11,50 12,46 9,44 13,44" fill="#FF6B9D"/>
+                <polygon points="135,38 137,42 141,42 138,44 139,48 135,46 131,48 132,44 129,42 133,42" fill="#4CAF50"/>
+                <!-- Antenna -->
+                <line x1="75" y1="38" x2="75" y2="28" stroke="#7B68EE" stroke-width="3" stroke-linecap="round"/>
+                <circle cx="75" cy="25" r="5" fill="#FFD700"/>
+                <!-- Head -->
+                <rect x="40" y="38" width="70" height="55" rx="18" fill="#4A90D9"/>
+                <!-- Eyes (happy - curved) -->
+                <path d="M53 58 Q60 52 67 58" stroke="#FFFFFF" stroke-width="3" fill="none" stroke-linecap="round"/>
+                <path d="M83 58 Q90 52 97 58" stroke="#FFFFFF" stroke-width="3" fill="none" stroke-linecap="round"/>
+                <!-- Big smile -->
+                <path d="M58 72 Q75 86 92 72" stroke="#FFFFFF" stroke-width="3" fill="none" stroke-linecap="round"/>
+                <!-- Rosy cheeks -->
+                <circle cx="52" cy="70" r="5" fill="#FF6B9D" opacity="0.5"/>
+                <circle cx="98" cy="70" r="5" fill="#FF6B9D" opacity="0.5"/>
+                <!-- Neck -->
+                <rect x="67" y="93" width="16" height="8" rx="4" fill="#7B68EE"/>
+                <!-- Body -->
+                <rect x="35" y="101" width="80" height="50" rx="14" fill="#7B68EE"/>
+                <!-- Chest light (bright glow) -->
+                <circle cx="75" cy="122" r="10" fill="#FF8C42" opacity="0.9"/>
+                <circle cx="75" cy="122" r="5" fill="#FFD700"/>
+                <!-- Arms (raised in celebration) -->
+                <rect x="12" y="90" width="16" height="35" rx="8" fill="#4A90D9" transform="rotate(-30 20 90)"/>
+                <rect x="122" y="90" width="16" height="35" rx="8" fill="#4A90D9" transform="rotate(30 130 90)"/>
+                <!-- Hands -->
+                <circle cx="8" cy="118" r="7" fill="#4A90D9"/>
+                <circle cx="142" cy="118" r="7" fill="#4A90D9"/>
+                <!-- Legs -->
+                <rect x="52" y="151" width="16" height="22" rx="8" fill="#7B68EE"/>
+                <rect x="82" y="151" width="16" height="22" rx="8" fill="#7B68EE"/>
+                <!-- Feet -->
+                <ellipse cx="60" cy="175" rx="12" ry="6" fill="#4A90D9"/>
+                <ellipse cx="90" cy="175" rx="12" ry="6" fill="#4A90D9"/>
+              </svg>
+            </div>
+
+            <!-- Confidence Progress Bar -->
+            <div class="confidence-bar">
+              <div class="confidence-label">Robot's Confidence: <span class="confidence-value">0%</span></div>
+              <div class="confidence-track">
+                <div class="confidence-fill" style="width: 0%;"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right column: Image Grid + Training Bucket -->
+          <div class="training-right">
+            <!-- Image Grid (8 draggable cards) -->
+            <div class="training-grid">
+              <div class="training-card" data-category="cat" draggable="true">
+                <svg class="training-card__img" width="80" height="80" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" aria-label="Orange tabby cat">
+                  <ellipse cx="40" cy="52" rx="22" ry="18" fill="#F4A460"/>
+                  <circle cx="40" cy="32" r="16" fill="#F4A460"/>
+                  <polygon points="28,20 24,8 34,16" fill="#F4A460"/>
+                  <polygon points="52,20 56,8 46,16" fill="#F4A460"/>
+                  <polygon points="28,20 24,8 34,16" fill="none" stroke="#D2691E" stroke-width="1"/>
+                  <polygon points="52,20 56,8 46,16" fill="none" stroke="#D2691E" stroke-width="1"/>
+                  <circle cx="34" cy="30" r="3" fill="#2D3436"/>
+                  <circle cx="46" cy="30" r="3" fill="#2D3436"/>
+                  <ellipse cx="40" cy="36" rx="3" ry="2" fill="#FF6B9D"/>
+                  <path d="M37 38 Q40 41 43 38" stroke="#2D3436" stroke-width="1" fill="none"/>
+                  <line x1="22" y1="34" x2="30" y2="33" stroke="#D2691E" stroke-width="0.8"/>
+                  <line x1="22" y1="37" x2="30" y2="36" stroke="#D2691E" stroke-width="0.8"/>
+                  <line x1="50" y1="33" x2="58" y2="34" stroke="#D2691E" stroke-width="0.8"/>
+                  <line x1="50" y1="36" x2="58" y2="37" stroke="#D2691E" stroke-width="0.8"/>
+                  <path d="M55 60 Q60 50 62 62 Q64 72 58 70" fill="#F4A460" stroke="#D2691E" stroke-width="0.8"/>
+                </svg>
+                <span class="training-card__label">Cat</span>
+              </div>
+              <div class="training-card" data-category="cat" draggable="true">
+                <svg class="training-card__img" width="80" height="80" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" aria-label="Black cat">
+                  <ellipse cx="40" cy="52" rx="20" ry="16" fill="#2D3436"/>
+                  <circle cx="40" cy="32" r="14" fill="#2D3436"/>
+                  <polygon points="30,22 26,8 36,18" fill="#2D3436"/>
+                  <polygon points="50,22 54,8 44,18" fill="#2D3436"/>
+                  <circle cx="35" cy="30" r="3.5" fill="#4CAF50"/>
+                  <circle cx="45" cy="30" r="3.5" fill="#4CAF50"/>
+                  <circle cx="35" cy="30" r="1.5" fill="#000"/>
+                  <circle cx="45" cy="30" r="1.5" fill="#000"/>
+                  <ellipse cx="40" cy="36" rx="2.5" ry="1.8" fill="#FF6B9D"/>
+                  <line x1="22" y1="33" x2="30" y2="32" stroke="#555" stroke-width="0.8"/>
+                  <line x1="22" y1="36" x2="30" y2="35" stroke="#555" stroke-width="0.8"/>
+                  <line x1="50" y1="32" x2="58" y2="33" stroke="#555" stroke-width="0.8"/>
+                  <line x1="50" y1="35" x2="58" y2="36" stroke="#555" stroke-width="0.8"/>
+                  <path d="M56 58 Q62 48 64 60 Q66 72 60 68" fill="#2D3436" stroke="#555" stroke-width="0.5"/>
+                </svg>
+                <span class="training-card__label">Cat</span>
+              </div>
+              <div class="training-card" data-category="dog" draggable="true">
+                <svg class="training-card__img" width="80" height="80" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" aria-label="Golden retriever">
+                  <ellipse cx="40" cy="55" rx="22" ry="17" fill="#DAA520"/>
+                  <circle cx="40" cy="34" r="16" fill="#DAA520"/>
+                  <ellipse cx="28" cy="26" rx="8" ry="12" fill="#C8960C" transform="rotate(-15 28 26)"/>
+                  <ellipse cx="52" cy="26" rx="8" ry="12" fill="#C8960C" transform="rotate(15 52 26)"/>
+                  <circle cx="35" cy="32" r="3" fill="#2D3436"/>
+                  <circle cx="45" cy="32" r="3" fill="#2D3436"/>
+                  <ellipse cx="40" cy="39" rx="4" ry="3" fill="#2D3436"/>
+                  <path d="M36 43 Q40 47 44 43" stroke="#2D3436" stroke-width="1.2" fill="none"/>
+                  <ellipse cx="40" cy="46" rx="5" ry="3" fill="#FF6B9D" opacity="0.7"/>
+                  <path d="M55 62 Q62 55 65 65 Q67 72 60 70 Q55 68 55 62" fill="#DAA520"/>
+                </svg>
+                <span class="training-card__label">Dog</span>
+              </div>
+              <div class="training-card" data-category="dog" draggable="true">
+                <svg class="training-card__img" width="80" height="80" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" aria-label="Dalmatian dog">
+                  <ellipse cx="40" cy="55" rx="22" ry="17" fill="#FFFFFF" stroke="#CCC" stroke-width="0.5"/>
+                  <circle cx="40" cy="34" r="16" fill="#FFFFFF" stroke="#CCC" stroke-width="0.5"/>
+                  <ellipse cx="28" cy="26" rx="7" ry="11" fill="#FFFFFF" stroke="#CCC" stroke-width="0.5" transform="rotate(-10 28 26)"/>
+                  <ellipse cx="52" cy="26" rx="7" ry="11" fill="#2D3436" transform="rotate(10 52 26)"/>
+                  <circle cx="35" cy="32" r="3" fill="#2D3436"/>
+                  <circle cx="45" cy="32" r="3" fill="#2D3436"/>
+                  <ellipse cx="40" cy="39" rx="4" ry="3" fill="#2D3436"/>
+                  <path d="M36 43 Q40 47 44 43" stroke="#2D3436" stroke-width="1.2" fill="none"/>
+                  <circle cx="32" cy="50" r="4" fill="#2D3436"/>
+                  <circle cx="50" cy="55" r="3" fill="#2D3436"/>
+                  <circle cx="42" cy="62" r="3.5" fill="#2D3436"/>
+                  <circle cx="35" cy="38" r="2.5" fill="#2D3436"/>
+                  <path d="M55 62 Q62 55 65 65 Q67 72 60 70 Q55 68 55 62" fill="#FFFFFF" stroke="#CCC" stroke-width="0.5"/>
+                </svg>
+                <span class="training-card__label">Dog</span>
+              </div>
+              <div class="training-card" data-category="car" draggable="true">
+                <svg class="training-card__img" width="80" height="80" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" aria-label="Red sedan car">
+                  <rect x="12" y="38" width="56" height="20" rx="4" fill="#E53935"/>
+                  <path d="M22 38 L30 22 L50 22 L58 38" fill="#E53935"/>
+                  <rect x="32" y="24" width="14" height="12" rx="2" fill="#B3E5FC"/>
+                  <rect x="22" y="26" width="9" height="10" rx="2" fill="#B3E5FC"/>
+                  <circle cx="24" cy="58" r="7" fill="#333"/>
+                  <circle cx="24" cy="58" r="4" fill="#666"/>
+                  <circle cx="56" cy="58" r="7" fill="#333"/>
+                  <circle cx="56" cy="58" r="4" fill="#666"/>
+                  <rect x="60" y="42" width="6" height="4" rx="1" fill="#FFD700"/>
+                  <rect x="14" y="42" width="6" height="4" rx="1" fill="#FF5252"/>
+                </svg>
+                <span class="training-card__label">Car</span>
+              </div>
+              <div class="training-card" data-category="car" draggable="true">
+                <svg class="training-card__img" width="80" height="80" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" aria-label="Blue SUV car">
+                  <rect x="10" y="35" width="60" height="24" rx="4" fill="#1E88E5"/>
+                  <path d="M18 35 L24 20 L56 20 L62 35" fill="#1E88E5"/>
+                  <rect x="26" y="22" width="12" height="11" rx="2" fill="#B3E5FC"/>
+                  <rect x="40" y="22" width="12" height="11" rx="2" fill="#B3E5FC"/>
+                  <circle cx="22" cy="59" r="8" fill="#333"/>
+                  <circle cx="22" cy="59" r="5" fill="#777"/>
+                  <circle cx="58" cy="59" r="8" fill="#333"/>
+                  <circle cx="58" cy="59" r="5" fill="#777"/>
+                  <rect x="62" y="40" width="6" height="5" rx="1" fill="#FFD700"/>
+                  <rect x="12" y="40" width="6" height="5" rx="1" fill="#FF5252"/>
+                  <rect x="10" y="55" width="60" height="3" rx="1" fill="#1565C0"/>
+                </svg>
+                <span class="training-card__label">Car</span>
+              </div>
+              <div class="training-card" data-category="flower" draggable="true">
+                <svg class="training-card__img" width="80" height="80" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" aria-label="Pink daisy flower">
+                  <line x1="40" y1="50" x2="40" y2="75" stroke="#4CAF50" stroke-width="3"/>
+                  <ellipse cx="30" cy="65" rx="8" ry="4" fill="#4CAF50" transform="rotate(-30 30 65)"/>
+                  <ellipse cx="40" cy="32" rx="6" ry="12" fill="#FF6B9D"/>
+                  <ellipse cx="40" cy="32" rx="6" ry="12" fill="#FF6B9D" transform="rotate(60 40 38)"/>
+                  <ellipse cx="40" cy="32" rx="6" ry="12" fill="#FF6B9D" transform="rotate(120 40 38)"/>
+                  <ellipse cx="40" cy="32" rx="6" ry="12" fill="#FF8A9D" transform="rotate(30 40 38)"/>
+                  <ellipse cx="40" cy="32" rx="6" ry="12" fill="#FF8A9D" transform="rotate(90 40 38)"/>
+                  <ellipse cx="40" cy="32" rx="6" ry="12" fill="#FF8A9D" transform="rotate(150 40 38)"/>
+                  <circle cx="40" cy="38" r="7" fill="#FFD700"/>
+                </svg>
+                <span class="training-card__label">Flower</span>
+              </div>
+              <div class="training-card" data-category="flower" draggable="true">
+                <svg class="training-card__img" width="80" height="80" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" aria-label="Sunflower">
+                  <line x1="40" y1="50" x2="38" y2="75" stroke="#4CAF50" stroke-width="3"/>
+                  <ellipse cx="48" cy="62" rx="9" ry="4" fill="#4CAF50" transform="rotate(20 48 62)"/>
+                  <ellipse cx="40" cy="30" rx="5" ry="11" fill="#FFC107"/>
+                  <ellipse cx="40" cy="30" rx="5" ry="11" fill="#FFC107" transform="rotate(45 40 36)"/>
+                  <ellipse cx="40" cy="30" rx="5" ry="11" fill="#FFC107" transform="rotate(90 40 36)"/>
+                  <ellipse cx="40" cy="30" rx="5" ry="11" fill="#FFC107" transform="rotate(135 40 36)"/>
+                  <ellipse cx="40" cy="30" rx="5" ry="11" fill="#FFB300" transform="rotate(22 40 36)"/>
+                  <ellipse cx="40" cy="30" rx="5" ry="11" fill="#FFB300" transform="rotate(67 40 36)"/>
+                  <ellipse cx="40" cy="30" rx="5" ry="11" fill="#FFB300" transform="rotate(112 40 36)"/>
+                  <ellipse cx="40" cy="30" rx="5" ry="11" fill="#FFB300" transform="rotate(157 40 36)"/>
+                  <circle cx="40" cy="36" r="9" fill="#5D4037"/>
+                  <circle cx="37" cy="34" r="1.5" fill="#3E2723"/>
+                  <circle cx="42" cy="33" r="1.5" fill="#3E2723"/>
+                  <circle cx="40" cy="38" r="1.5" fill="#3E2723"/>
+                  <circle cx="44" cy="37" r="1.5" fill="#3E2723"/>
+                  <circle cx="36" cy="38" r="1.5" fill="#3E2723"/>
+                </svg>
+                <span class="training-card__label">Flower</span>
+              </div>
+            </div>
+
+            <!-- Training Bucket (Drop Zone) -->
+            <div class="training-bucket" aria-label="Drop zone - drag images here to teach the robot">
+              <span class="training-bucket__icon">🧠</span>
+              <p class="training-bucket__text">Drop images here to teach me!</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Explanatory Text Area -->
+        <div class="training-explanation">
+          <p>Drag the pictures into the robot's brain. The more examples you give, the smarter the robot gets!</p>
+        </div>
+
+        <!-- Fun Facts Panel -->
+        <div class="training-facts">
+          <div class="fact-card">
+            <span class="fact-card__icon">📚</span>
+            <p class="fact-card__text">Real AI looks at thousands of pictures to learn! That's like looking at a picture book with 10,000 pages!</p>
+          </div>
+          <div class="fact-card">
+            <span class="fact-card__icon">🐱</span>
+            <p class="fact-card__text">To learn what a cat looks like, AI might study 50,000 cat photos — more cats than live in your whole city!</p>
+          </div>
+          <div class="fact-card">
+            <span class="fact-card__icon">🌟</span>
+            <p class="fact-card__text">AI needs to practice just like you do! The more examples it sees, the better it gets.</p>
+          </div>
+        </div>
+
+        <button class="reset-btn" onclick="trainingSimulation.reset()" aria-label="Reset training activity">🔄 Try Again</button>
+      </div>
+    </section>
+    <section id="resources" class="module-section">
+      <div class="module-content resources-layout">
+        <h2 class="module-title">Super Computers</h2>
+        <p class="module-subtitle">Why does AI need so many computers?</p>
+
+        <!-- Library Metaphor Illustration -->
+        <div class="resources-metaphor">
+          <svg width="220" height="140" viewBox="0 0 220 140" xmlns="http://www.w3.org/2000/svg" aria-label="Library bookshelf illustration">
+            <!-- Bookshelf frame -->
+            <rect x="10" y="10" width="200" height="120" rx="6" fill="#8B5E3C" opacity="0.2"/>
+            <!-- Shelves -->
+            <rect x="15" y="45" width="190" height="4" rx="2" fill="#8B5E3C"/>
+            <rect x="15" y="85" width="190" height="4" rx="2" fill="#8B5E3C"/>
+            <rect x="15" y="125" width="190" height="4" rx="2" fill="#8B5E3C"/>
+            <!-- Top shelf books -->
+            <rect x="20" y="15" width="14" height="28" rx="2" fill="#4A90D9"/>
+            <rect x="36" y="18" width="12" height="25" rx="2" fill="#FF8C42"/>
+            <rect x="50" y="14" width="15" height="29" rx="2" fill="#7B68EE"/>
+            <rect x="67" y="17" width="11" height="26" rx="2" fill="#4CAF50"/>
+            <rect x="80" y="13" width="14" height="30" rx="2" fill="#FF6B9D"/>
+            <rect x="96" y="16" width="13" height="27" rx="2" fill="#4A90D9"/>
+            <rect x="111" y="14" width="15" height="29" rx="2" fill="#FFD700"/>
+            <rect x="128" y="18" width="12" height="25" rx="2" fill="#FF8C42"/>
+            <rect x="142" y="15" width="14" height="28" rx="2" fill="#7B68EE"/>
+            <rect x="158" y="13" width="13" height="30" rx="2" fill="#4CAF50"/>
+            <rect x="173" y="17" width="14" height="26" rx="2" fill="#FF6B9D"/>
+            <rect x="189" y="14" width="12" height="29" rx="2" fill="#4A90D9"/>
+            <!-- Middle shelf books -->
+            <rect x="20" y="52" width="13" height="30" rx="2" fill="#FF6B9D"/>
+            <rect x="35" y="55" width="15" height="27" rx="2" fill="#4A90D9"/>
+            <rect x="52" y="51" width="12" height="31" rx="2" fill="#FFD700"/>
+            <rect x="66" y="54" width="14" height="28" rx="2" fill="#7B68EE"/>
+            <rect x="82" y="52" width="13" height="30" rx="2" fill="#FF8C42"/>
+            <rect x="97" y="55" width="15" height="27" rx="2" fill="#4CAF50"/>
+            <rect x="114" y="51" width="12" height="31" rx="2" fill="#4A90D9"/>
+            <rect x="128" y="53" width="14" height="29" rx="2" fill="#FF6B9D"/>
+            <rect x="144" y="52" width="13" height="30" rx="2" fill="#FFD700"/>
+            <rect x="159" y="55" width="15" height="27" rx="2" fill="#7B68EE"/>
+            <rect x="176" y="51" width="12" height="31" rx="2" fill="#FF8C42"/>
+            <rect x="190" y="54" width="12" height="28" rx="2" fill="#4CAF50"/>
+            <!-- Bottom shelf books -->
+            <rect x="20" y="92" width="14" height="30" rx="2" fill="#7B68EE"/>
+            <rect x="36" y="95" width="12" height="27" rx="2" fill="#4CAF50"/>
+            <rect x="50" y="91" width="15" height="31" rx="2" fill="#FF8C42"/>
+            <rect x="67" y="94" width="13" height="28" rx="2" fill="#4A90D9"/>
+            <rect x="82" y="92" width="14" height="30" rx="2" fill="#FFD700"/>
+            <rect x="98" y="95" width="12" height="27" rx="2" fill="#FF6B9D"/>
+            <rect x="112" y="91" width="15" height="31" rx="2" fill="#7B68EE"/>
+            <rect x="129" y="93" width="13" height="29" rx="2" fill="#FF8C42"/>
+            <rect x="144" y="92" width="14" height="30" rx="2" fill="#4A90D9"/>
+            <rect x="160" y="95" width="12" height="27" rx="2" fill="#4CAF50"/>
+            <rect x="174" y="91" width="15" height="31" rx="2" fill="#FFD700"/>
+            <rect x="191" y="94" width="12" height="28" rx="2" fill="#FF6B9D"/>
+          </svg>
+          <p class="resources-metaphor__text">Imagine reading <strong>ALL</strong> the books in a giant library. One person would take years! But if 100 people read together, they finish much faster!</p>
+        </div>
+
+        <!-- Race Visualization Area -->
+        <div class="resources-race">
+          <!-- Single Computer Lane -->
+          <div class="race-lane">
+            <h3 class="race-lane__title">1 Computer</h3>
+            <div class="race-lane__workers">
+              <svg width="50" height="60" viewBox="0 0 50 60" xmlns="http://www.w3.org/2000/svg" aria-label="Single robot worker">
+                <!-- Hard hat -->
+                <ellipse cx="25" cy="10" rx="16" ry="8" fill="#FFD700"/>
+                <rect x="12" y="8" width="26" height="6" rx="3" fill="#FFD700"/>
+                <!-- Head -->
+                <rect x="14" y="14" width="22" height="18" rx="6" fill="#4A90D9"/>
+                <!-- Eyes -->
+                <circle cx="21" cy="22" r="3" fill="#FFFFFF"/>
+                <circle cx="29" cy="22" r="3" fill="#FFFFFF"/>
+                <circle cx="21" cy="22" r="1.5" fill="#2D3436"/>
+                <circle cx="29" cy="22" r="1.5" fill="#2D3436"/>
+                <!-- Body -->
+                <rect x="15" y="34" width="20" height="16" rx="5" fill="#7B68EE"/>
+                <!-- Arms -->
+                <rect x="8" y="36" width="6" height="12" rx="3" fill="#4A90D9"/>
+                <rect x="36" y="36" width="6" height="12" rx="3" fill="#4A90D9"/>
+                <!-- Legs -->
+                <rect x="18" y="50" width="5" height="8" rx="2.5" fill="#7B68EE"/>
+                <rect x="27" y="50" width="5" height="8" rx="2.5" fill="#7B68EE"/>
+              </svg>
+            </div>
+            <!-- Card pile visual -->
+            <div class="race-lane__pile">
+              <span class="pile-label">100 cards to sort</span>
+              <div class="pile-stack">
+                <div class="pile-card"></div>
+                <div class="pile-card"></div>
+                <div class="pile-card"></div>
+                <div class="pile-card"></div>
+                <div class="pile-card"></div>
+              </div>
+            </div>
+            <!-- Progress Track -->
+            <div class="race-track">
+              <div class="race-fill" id="single-fill" style="width: 0%;"></div>
+            </div>
+            <div class="race-lane__counter"><span id="single-counter">0</span> / 100</div>
+          </div>
+
+          <!-- Many Computers Lane -->
+          <div class="race-lane">
+            <h3 class="race-lane__title">Many Computers</h3>
+            <div class="race-lane__workers race-lane__workers--many">
+              <svg width="24" height="30" viewBox="0 0 50 60" xmlns="http://www.w3.org/2000/svg" aria-label="Robot worker"><ellipse cx="25" cy="10" rx="16" ry="8" fill="#FFD700"/><rect x="12" y="8" width="26" height="6" rx="3" fill="#FFD700"/><rect x="14" y="14" width="22" height="18" rx="6" fill="#4A90D9"/><circle cx="21" cy="22" r="3" fill="#FFF"/><circle cx="29" cy="22" r="3" fill="#FFF"/><circle cx="21" cy="22" r="1.5" fill="#2D3436"/><circle cx="29" cy="22" r="1.5" fill="#2D3436"/><rect x="15" y="34" width="20" height="16" rx="5" fill="#7B68EE"/><rect x="8" y="36" width="6" height="12" rx="3" fill="#4A90D9"/><rect x="36" y="36" width="6" height="12" rx="3" fill="#4A90D9"/><rect x="18" y="50" width="5" height="8" rx="2.5" fill="#7B68EE"/><rect x="27" y="50" width="5" height="8" rx="2.5" fill="#7B68EE"/></svg>
+              <svg width="24" height="30" viewBox="0 0 50 60" xmlns="http://www.w3.org/2000/svg" aria-label="Robot worker"><ellipse cx="25" cy="10" rx="16" ry="8" fill="#FFD700"/><rect x="12" y="8" width="26" height="6" rx="3" fill="#FFD700"/><rect x="14" y="14" width="22" height="18" rx="6" fill="#4A90D9"/><circle cx="21" cy="22" r="3" fill="#FFF"/><circle cx="29" cy="22" r="3" fill="#FFF"/><circle cx="21" cy="22" r="1.5" fill="#2D3436"/><circle cx="29" cy="22" r="1.5" fill="#2D3436"/><rect x="15" y="34" width="20" height="16" rx="5" fill="#7B68EE"/><rect x="8" y="36" width="6" height="12" rx="3" fill="#4A90D9"/><rect x="36" y="36" width="6" height="12" rx="3" fill="#4A90D9"/><rect x="18" y="50" width="5" height="8" rx="2.5" fill="#7B68EE"/><rect x="27" y="50" width="5" height="8" rx="2.5" fill="#7B68EE"/></svg>
+              <svg width="24" height="30" viewBox="0 0 50 60" xmlns="http://www.w3.org/2000/svg" aria-label="Robot worker"><ellipse cx="25" cy="10" rx="16" ry="8" fill="#FFD700"/><rect x="12" y="8" width="26" height="6" rx="3" fill="#FFD700"/><rect x="14" y="14" width="22" height="18" rx="6" fill="#4A90D9"/><circle cx="21" cy="22" r="3" fill="#FFF"/><circle cx="29" cy="22" r="3" fill="#FFF"/><circle cx="21" cy="22" r="1.5" fill="#2D3436"/><circle cx="29" cy="22" r="1.5" fill="#2D3436"/><rect x="15" y="34" width="20" height="16" rx="5" fill="#7B68EE"/><rect x="8" y="36" width="6" height="12" rx="3" fill="#4A90D9"/><rect x="36" y="36" width="6" height="12" rx="3" fill="#4A90D9"/><rect x="18" y="50" width="5" height="8" rx="2.5" fill="#7B68EE"/><rect x="27" y="50" width="5" height="8" rx="2.5" fill="#7B68EE"/></svg>
+              <svg width="24" height="30" viewBox="0 0 50 60" xmlns="http://www.w3.org/2000/svg" aria-label="Robot worker"><ellipse cx="25" cy="10" rx="16" ry="8" fill="#FFD700"/><rect x="12" y="8" width="26" height="6" rx="3" fill="#FFD700"/><rect x="14" y="14" width="22" height="18" rx="6" fill="#4A90D9"/><circle cx="21" cy="22" r="3" fill="#FFF"/><circle cx="29" cy="22" r="3" fill="#FFF"/><circle cx="21" cy="22" r="1.5" fill="#2D3436"/><circle cx="29" cy="22" r="1.5" fill="#2D3436"/><rect x="15" y="34" width="20" height="16" rx="5" fill="#7B68EE"/><rect x="8" y="36" width="6" height="12" rx="3" fill="#4A90D9"/><rect x="36" y="36" width="6" height="12" rx="3" fill="#4A90D9"/><rect x="18" y="50" width="5" height="8" rx="2.5" fill="#7B68EE"/><rect x="27" y="50" width="5" height="8" rx="2.5" fill="#7B68EE"/></svg>
+              <svg width="24" height="30" viewBox="0 0 50 60" xmlns="http://www.w3.org/2000/svg" aria-label="Robot worker"><ellipse cx="25" cy="10" rx="16" ry="8" fill="#FFD700"/><rect x="12" y="8" width="26" height="6" rx="3" fill="#FFD700"/><rect x="14" y="14" width="22" height="18" rx="6" fill="#4A90D9"/><circle cx="21" cy="22" r="3" fill="#FFF"/><circle cx="29" cy="22" r="3" fill="#FFF"/><circle cx="21" cy="22" r="1.5" fill="#2D3436"/><circle cx="29" cy="22" r="1.5" fill="#2D3436"/><rect x="15" y="34" width="20" height="16" rx="5" fill="#7B68EE"/><rect x="8" y="36" width="6" height="12" rx="3" fill="#4A90D9"/><rect x="36" y="36" width="6" height="12" rx="3" fill="#4A90D9"/><rect x="18" y="50" width="5" height="8" rx="2.5" fill="#7B68EE"/><rect x="27" y="50" width="5" height="8" rx="2.5" fill="#7B68EE"/></svg>
+              <svg width="24" height="30" viewBox="0 0 50 60" xmlns="http://www.w3.org/2000/svg" aria-label="Robot worker"><ellipse cx="25" cy="10" rx="16" ry="8" fill="#FFD700"/><rect x="12" y="8" width="26" height="6" rx="3" fill="#FFD700"/><rect x="14" y="14" width="22" height="18" rx="6" fill="#4A90D9"/><circle cx="21" cy="22" r="3" fill="#FFF"/><circle cx="29" cy="22" r="3" fill="#FFF"/><circle cx="21" cy="22" r="1.5" fill="#2D3436"/><circle cx="29" cy="22" r="1.5" fill="#2D3436"/><rect x="15" y="34" width="20" height="16" rx="5" fill="#7B68EE"/><rect x="8" y="36" width="6" height="12" rx="3" fill="#4A90D9"/><rect x="36" y="36" width="6" height="12" rx="3" fill="#4A90D9"/><rect x="18" y="50" width="5" height="8" rx="2.5" fill="#7B68EE"/><rect x="27" y="50" width="5" height="8" rx="2.5" fill="#7B68EE"/></svg>
+              <svg width="24" height="30" viewBox="0 0 50 60" xmlns="http://www.w3.org/2000/svg" aria-label="Robot worker"><ellipse cx="25" cy="10" rx="16" ry="8" fill="#FFD700"/><rect x="12" y="8" width="26" height="6" rx="3" fill="#FFD700"/><rect x="14" y="14" width="22" height="18" rx="6" fill="#4A90D9"/><circle cx="21" cy="22" r="3" fill="#FFF"/><circle cx="29" cy="22" r="3" fill="#FFF"/><circle cx="21" cy="22" r="1.5" fill="#2D3436"/><circle cx="29" cy="22" r="1.5" fill="#2D3436"/><rect x="15" y="34" width="20" height="16" rx="5" fill="#7B68EE"/><rect x="8" y="36" width="6" height="12" rx="3" fill="#4A90D9"/><rect x="36" y="36" width="6" height="12" rx="3" fill="#4A90D9"/><rect x="18" y="50" width="5" height="8" rx="2.5" fill="#7B68EE"/><rect x="27" y="50" width="5" height="8" rx="2.5" fill="#7B68EE"/></svg>
+              <svg width="24" height="30" viewBox="0 0 50 60" xmlns="http://www.w3.org/2000/svg" aria-label="Robot worker"><ellipse cx="25" cy="10" rx="16" ry="8" fill="#FFD700"/><rect x="12" y="8" width="26" height="6" rx="3" fill="#FFD700"/><rect x="14" y="14" width="22" height="18" rx="6" fill="#4A90D9"/><circle cx="21" cy="22" r="3" fill="#FFF"/><circle cx="29" cy="22" r="3" fill="#FFF"/><circle cx="21" cy="22" r="1.5" fill="#2D3436"/><circle cx="29" cy="22" r="1.5" fill="#2D3436"/><rect x="15" y="34" width="20" height="16" rx="5" fill="#7B68EE"/><rect x="8" y="36" width="6" height="12" rx="3" fill="#4A90D9"/><rect x="36" y="36" width="6" height="12" rx="3" fill="#4A90D9"/><rect x="18" y="50" width="5" height="8" rx="2.5" fill="#7B68EE"/><rect x="27" y="50" width="5" height="8" rx="2.5" fill="#7B68EE"/></svg>
+            </div>
+            <!-- Card pile visual -->
+            <div class="race-lane__pile">
+              <span class="pile-label">100 cards to sort</span>
+              <div class="pile-stack">
+                <div class="pile-card"></div>
+                <div class="pile-card"></div>
+                <div class="pile-card"></div>
+                <div class="pile-card"></div>
+                <div class="pile-card"></div>
+              </div>
+            </div>
+            <!-- Progress Track -->
+            <div class="race-track">
+              <div class="race-fill" id="parallel-fill" style="width: 0%;"></div>
+            </div>
+            <div class="race-lane__counter"><span id="parallel-counter">0</span> / 100</div>
+          </div>
+        </div>
+
+        <!-- Start Race Button -->
+        <button class="race-start-btn" aria-label="Start the race">🏁 Start Race!</button>
+
+        <!-- Conclusion Area (hidden initially) -->
+        <div class="race-conclusion" style="display: none;">
+          <p>Many computers working together = faster AI training! 🎉</p>
+        </div>
+
+        <!-- Resources Fun Facts (hidden until race completes) -->
+        <div class="resources-facts" style="display: none;">
+          <div class="fact-card">
+            <span class="fact-card__icon">🏫</span>
+            <p class="fact-card__text">AI uses more computers than there are students in your school — sometimes thousands working together! 🏫</p>
+          </div>
+          <div class="fact-card">
+            <span class="fact-card__icon">⏰</span>
+            <p class="fact-card__text">Training a big AI model can take weeks, even with all those computers. That's like reading non-stop for a whole month! ⏰</p>
+          </div>
+        </div>
+
+        <button class="reset-btn" onclick="window.resourcesRace.reset()" aria-label="Reset race activity">🔄 Try Again</button>
+      </div>
+    </section>
+    <section id="usage" class="module-section">
+      <div class="module-content usage-layout">
+        <h2 class="module-title">AI All Around Us</h2>
+        <p class="module-subtitle">Can you match each AI to what it does?</p>
+
+        <!-- Matching Game Area -->
+        <div class="usage-matching">
+          <!-- Left Column: Application Cards -->
+          <div class="matching-apps">
+            <div class="match-card match-card--app" data-pair="0" role="button" tabindex="0" aria-label="Voice Assistant">
+              <span class="match-card__icon">🎤</span>
+              <span class="match-card__name">Voice Assistant</span>
+            </div>
+            <div class="match-card match-card--app" data-pair="1" role="button" tabindex="0" aria-label="Photo Filters">
+              <span class="match-card__icon">📸</span>
+              <span class="match-card__name">Photo Filters</span>
+            </div>
+            <div class="match-card match-card--app" data-pair="2" role="button" tabindex="0" aria-label="Recommendations">
+              <span class="match-card__icon">📺</span>
+              <span class="match-card__name">Recommendations</span>
+            </div>
+            <div class="match-card match-card--app" data-pair="3" role="button" tabindex="0" aria-label="Translation">
+              <span class="match-card__icon">🌍</span>
+              <span class="match-card__name">Translation</span>
+            </div>
+            <div class="match-card match-card--app" data-pair="4" role="button" tabindex="0" aria-label="Autocorrect">
+              <span class="match-card__icon">⌨️</span>
+              <span class="match-card__name">Autocorrect</span>
+            </div>
+          </div>
+
+          <!-- Right Column: Description Cards (shuffled order) -->
+          <div class="matching-descriptions">
+            <div class="match-card match-card--desc" data-pair="3" role="button" tabindex="0">
+              <span class="match-card__text">Changes words from one language to another</span>
+            </div>
+            <div class="match-card match-card--desc" data-pair="0" role="button" tabindex="0">
+              <span class="match-card__text">Listens to your voice and answers questions</span>
+            </div>
+            <div class="match-card match-card--desc" data-pair="4" role="button" tabindex="0">
+              <span class="match-card__text">Fixes spelling mistakes as you type</span>
+            </div>
+            <div class="match-card match-card--desc" data-pair="2" role="button" tabindex="0">
+              <span class="match-card__text">Suggests videos you might like</span>
+            </div>
+            <div class="match-card match-card--desc" data-pair="1" role="button" tabindex="0">
+              <span class="match-card__text">Finds your face and adds fun effects</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Feedback Area -->
+        <div class="matching-feedback" aria-live="polite"></div>
+
+        <!-- Training vs Usage Comparison -->
+        <div class="usage-comparison">
+          <div class="comparison-side comparison-side--training">
+            <h3 class="comparison-side__title">Training AI</h3>
+            <div class="comparison-side__icons">
+              <span class="comparison-side__emoji">⏰</span>
+              <span class="comparison-side__emoji">💻💻💻</span>
+            </div>
+            <p class="comparison-side__text">Slow and expensive</p>
+          </div>
+          <div class="comparison-side comparison-side--using">
+            <h3 class="comparison-side__title">Using AI</h3>
+            <div class="comparison-side__icons">
+              <span class="comparison-side__emoji">⚡</span>
+              <span class="comparison-side__emoji">📱</span>
+            </div>
+            <p class="comparison-side__text">Fast and easy!</p>
+          </div>
+        </div>
+
+        <button class="reset-btn" onclick="window.matchingGame.reset()" aria-label="Reset matching activity">🔄 Try Again</button>
+      </div>
+    </section>
+    <section id="customization" class="module-section">
+      <div class="module-content custom-layout">
+        <h2 class="module-title">Make AI Your Own</h2>
+        <p class="module-subtitle">See how you can change what AI says!</p>
+
+        <!-- Sub-section Tabs -->
+        <div class="custom-tabs">
+          <button class="custom-tab active" data-tab="knowledge" aria-pressed="true">📚 Knowledge Bases</button>
+          <button class="custom-tab" data-tab="context" aria-pressed="false">🔍 Context</button>
+          <button class="custom-tab" data-tab="prompts" aria-pressed="false">✍️ Prompts</button>
+        </div>
+
+        <!-- Shared Robot Character -->
+        <div class="custom-robot" aria-label="Customizable robot character">
+          <svg class="custom-robot-svg" width="140" height="170" viewBox="0 0 140 170" xmlns="http://www.w3.org/2000/svg">
+            <!-- Antenna -->
+            <line x1="70" y1="28" x2="70" y2="18" stroke="#7B68EE" stroke-width="3" stroke-linecap="round"/>
+            <circle cx="70" cy="15" r="4" fill="#FF8C42"/>
+            <!-- Head -->
+            <rect x="35" y="28" width="70" height="55" rx="18" fill="#4A90D9"/>
+            <!-- Eyes -->
+            <circle cx="55" cy="52" r="8" fill="#FFFFFF"/>
+            <circle cx="85" cy="52" r="8" fill="#FFFFFF"/>
+            <circle cx="57" cy="53" r="4" fill="#2D3436"/>
+            <circle cx="87" cy="53" r="4" fill="#2D3436"/>
+            <!-- Smile -->
+            <path d="M55 68 Q70 80 85 68" stroke="#FFFFFF" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+            <!-- Neck -->
+            <rect x="62" y="83" width="16" height="8" rx="4" fill="#7B68EE"/>
+            <!-- Body -->
+            <rect x="30" y="91" width="80" height="50" rx="14" fill="#7B68EE"/>
+            <!-- Chest light -->
+            <circle cx="70" cy="112" r="8" fill="#FF8C42" opacity="0.9"/>
+            <circle cx="70" cy="112" r="4" fill="#FFD700"/>
+            <!-- Arms -->
+            <rect x="10" y="96" width="16" height="35" rx="8" fill="#4A90D9"/>
+            <rect x="114" y="96" width="16" height="35" rx="8" fill="#4A90D9"/>
+            <!-- Hands -->
+            <circle cx="18" cy="134" r="7" fill="#4A90D9"/>
+            <circle cx="122" cy="134" r="7" fill="#4A90D9"/>
+            <!-- Legs -->
+            <rect x="45" y="141" width="16" height="22" rx="8" fill="#7B68EE"/>
+            <rect x="79" y="141" width="16" height="22" rx="8" fill="#7B68EE"/>
+            <!-- Feet -->
+            <ellipse cx="53" cy="165" rx="12" ry="6" fill="#4A90D9"/>
+            <ellipse cx="87" cy="165" rx="12" ry="6" fill="#4A90D9"/>
+          </svg>
+          <!-- Costume Overlays (shown/hidden by JS) -->
+          <div class="costume-overlay costume-lab-coat" style="display:none;" aria-hidden="true">
+            <svg width="140" height="170" viewBox="0 0 140 170" xmlns="http://www.w3.org/2000/svg">
+              <!-- Lab coat -->
+              <rect x="25" y="88" width="90" height="55" rx="10" fill="#FFFFFF" opacity="0.9"/>
+              <rect x="25" y="88" width="90" height="55" rx="10" fill="none" stroke="#CCCCCC" stroke-width="1.5"/>
+              <!-- Pocket -->
+              <rect x="80" y="105" width="20" height="15" rx="3" fill="none" stroke="#CCCCCC" stroke-width="1"/>
+              <!-- Glasses -->
+              <circle cx="55" cy="52" r="10" fill="none" stroke="#333" stroke-width="2"/>
+              <circle cx="85" cy="52" r="10" fill="none" stroke="#333" stroke-width="2"/>
+              <line x1="65" y1="52" x2="75" y2="52" stroke="#333" stroke-width="2"/>
+            </svg>
+          </div>
+          <div class="costume-overlay costume-wizard-hat" style="display:none;" aria-hidden="true">
+            <svg width="140" height="170" viewBox="0 0 140 170" xmlns="http://www.w3.org/2000/svg">
+              <!-- Wizard hat -->
+              <polygon points="70,0 45,28 95,28" fill="#7B68EE"/>
+              <ellipse cx="70" cy="28" rx="28" ry="6" fill="#5B48CE"/>
+              <!-- Stars on hat -->
+              <polygon points="60,10 61,13 64,13 62,15 63,18 60,16 57,18 58,15 56,13 59,13" fill="#FFD700"/>
+              <polygon points="78,14 79,16 81,16 80,17 80,19 78,18 76,19 77,17 76,16 78,16" fill="#FFD700"/>
+              <!-- Cape hint -->
+              <path d="M30 91 Q20 120 35 145" stroke="#7B68EE" stroke-width="3" fill="none" opacity="0.5"/>
+              <path d="M110 91 Q120 120 105 145" stroke="#7B68EE" stroke-width="3" fill="none" opacity="0.5"/>
+            </svg>
+          </div>
+          <div class="costume-overlay costume-clown-nose" style="display:none;" aria-hidden="true">
+            <svg width="140" height="170" viewBox="0 0 140 170" xmlns="http://www.w3.org/2000/svg">
+              <!-- Clown nose -->
+              <circle cx="70" cy="62" r="8" fill="#FF0000"/>
+              <!-- Bow tie -->
+              <polygon points="55,88 70,93 70,88 55,93" fill="#FF8C42"/>
+              <polygon points="85,88 70,93 70,88 85,93" fill="#FF8C42"/>
+              <circle cx="70" cy="90" r="3" fill="#FFD700"/>
+              <!-- Silly hair -->
+              <circle cx="40" cy="25" r="6" fill="#FF6B9D"/>
+              <circle cx="55" cy="18" r="5" fill="#4CAF50"/>
+              <circle cx="85" cy="18" r="5" fill="#FF8C42"/>
+              <circle cx="100" cy="25" r="6" fill="#4A90D9"/>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Robot Response Area -->
+        <div class="custom-response" aria-live="polite">
+          <span class="response-text"></span>
+          <span class="typewriter-cursor">|</span>
+        </div>
+
+        <!-- Knowledge Bases Sub-section -->
+        <div class="sub-section custom-knowledge active" data-section="knowledge">
+          <p class="custom-question">The robot knows general things, but what if we need it to be an expert? Let's give it a special book!</p>
+          <p class="custom-question" style="font-size: 1.1rem; background: rgba(255, 107, 157, 0.08); margin-top: -12px;">Ask the robot: "What's the best tip you have for me?"</p>
+          <div class="bookshelf-options">
+            <button class="bookshelf-btn" data-knowledge="school" aria-label="Our School Rules knowledge base">
+              <span class="bookshelf-btn__icon">🏫</span>
+              <span class="bookshelf-btn__label">Our School Rules</span>
+            </button>
+            <button class="bookshelf-btn" data-knowledge="dinosaurs" aria-label="Dinosaur Expert knowledge base">
+              <span class="bookshelf-btn__icon">🦕</span>
+              <span class="bookshelf-btn__label">Dinosaur Expert</span>
+            </button>
+            <button class="bookshelf-btn" data-knowledge="mtg" aria-label="Magic the Gathering knowledge base">
+              <span class="bookshelf-btn__icon">🃏</span>
+              <span class="bookshelf-btn__label">Magic the Gathering</span>
+            </button>
+          </div>
+          <p class="knowledge-hint">👆 Without a special book, the robot only gives general answers. Give it YOUR book and it becomes YOUR expert!</p>
+        </div>
+
+        <!-- Context Sub-section -->
+        <div class="sub-section custom-context" data-section="context" style="display:none;">
+          <p class="custom-question">Question: "What should I wear today?"</p>
+          <div class="context-cards">
+            <div class="context-card" data-context="sunny" draggable="true">It's sunny ☀️</div>
+            <div class="context-card" data-context="raining" draggable="true">It's raining 🌧️</div>
+            <div class="context-card" data-context="snowing" draggable="true">It's snowing ❄️</div>
+            <div class="context-card" data-context="party" draggable="true">I'm going to a party 🎉</div>
+          </div>
+          <div class="context-drop" aria-label="Drop zone - drag context cards here">
+            <span class="context-drop__icon">📦</span>
+            <p class="context-drop__text">Drop clues here!</p>
+          </div>
+        </div>
+
+        <!-- Prompts Sub-section -->
+        <div class="sub-section custom-prompts" data-section="prompts" style="display:none;">
+          <p class="custom-question">Topic: "Tell me about dogs"</p>
+          <div class="prompt-options">
+            <button class="prompt-btn" data-prompt="scientist" aria-label="Ask like a scientist">
+              <span class="prompt-btn__icon">🔬</span>
+              <span class="prompt-btn__label">Like a scientist</span>
+            </button>
+            <button class="prompt-btn" data-prompt="storyteller" aria-label="Ask like a storyteller">
+              <span class="prompt-btn__icon">📖</span>
+              <span class="prompt-btn__label">Like a storyteller</span>
+            </button>
+            <button class="prompt-btn" data-prompt="comedian" aria-label="Ask like a comedian">
+              <span class="prompt-btn__icon">🤡</span>
+              <span class="prompt-btn__label">Like a comedian</span>
+            </button>
+          </div>
+        </div>
+
+        <button class="reset-btn" onclick="window.customizationModule.reset()" aria-label="Reset customization activity">🔄 Try Again</button>
+      </div>
+    </section>
+  </div>
+
+  <nav id="bottom-nav">
+    <button class="sound-toggle" aria-label="Toggle sound effects" aria-pressed="false" title="Sound effects (off)">🔇</button>
+  </nav>
+
+  <script src="js/app.js"></script>
+  <script src="js/navigation.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/training-module.js"></script>
+  <script src="js/resources-module.js"></script>
+  <script src="js/usage-module.js"></script>
+  <script src="js/customization-module.js"></script>
+</body>
+</html>
