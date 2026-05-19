@@ -23,19 +23,27 @@ class CustomizationModule {
     };
 
     this.contextResponses = {
-      sunny: "Wear sunglasses and a t-shirt! 😎",
-      raining: "Don't forget your raincoat and boots! 🌂",
-      snowing: "Wear your warmest coat and a woolly hat! 🧣",
-      party: "Put on your fanciest outfit! 👗"
+      sunny: "Hmm, maybe something light? I'm not sure what exactly... 😅",
+      raining: "You might need something waterproof... I think? 🤔",
+      snowing: "Something warm probably? I'm not totally sure... 🤔",
+      party: "Something nice maybe? I don't know what kind of event it is... 🤔"
     };
 
     this.contextCombinations = {
-      'sunny,party': "Wear your party outfit with sunglasses! ☀️🎉",
-      'raining,party': "Bring an umbrella over your party clothes! 🌧️🎉",
-      'snowing,party': "Wear your warm coat over your party clothes! 🎉❄️",
-      'sunny,raining': "Wear a t-shirt but bring an umbrella just in case! ☀️🌧️",
-      'sunny,snowing': "It's confusing weather! Wear layers you can take off! ☀️❄️",
-      'raining,snowing': "Wear waterproof boots and your warmest coat! 🌧️❄️"
+      // 2 clues — more specific
+      'party,sunny': "A light party outfit with sunglasses! Since it's sunny and you're going out, a dress or nice shorts would work! ☀️🎉",
+      'party,raining': "Your party clothes with a raincoat on top and waterproof shoes! You'll stay dry and look great! 🌧️🎉",
+      'party,snowing': "Your warm coat over your party clothes, plus boots! You'll be cozy getting there and fancy once inside! ❄️🎉",
+      'raining,sunny': "A t-shirt with a light rain jacket — it might be a sun shower! Bring sunglasses too! ☀️🌧️",
+      'snowing,sunny': "A warm coat but with sunglasses — the sun on snow is super bright! 😎❄️",
+      'raining,snowing': "Waterproof boots and your warmest coat — it's cold and wet out there! 🌧️❄️",
+      // 3 clues — very specific
+      'party,raining,sunny': "A nice outfit with a light waterproof jacket and sunglasses in your pocket — the weather is tricky but you'll be ready for anything at the party! ☀️🌧️🎉",
+      'party,snowing,sunny': "Your fanciest warm outfit with sunglasses — the snow will sparkle in the sun and you'll look amazing at the party! ☀️❄️🎉",
+      'party,raining,snowing': "Waterproof boots, your warmest fancy coat, and an umbrella — you'll arrive at the party dry, warm, and looking great! 🌧️❄️🎉",
+      'raining,snowing,sunny': "Wow, wild weather! Wear layers: waterproof coat, warm sweater, and keep sunglasses handy. Be ready for everything! ☀️🌧️❄️",
+      // 4 clues — maximum precision
+      'party,raining,snowing,sunny': "What crazy weather! Here's the perfect plan: waterproof boots, warm coat, party outfit underneath, sunglasses in your pocket, and an umbrella. You're prepared for absolutely everything AND you'll look fantastic at the party! ☀️🌧️❄️🎉"
     };
 
     this.promptResponses = {
@@ -271,25 +279,39 @@ class CustomizationModule {
   }
 
   updateContextResponse() {
-    const contexts = this.selectedContexts.sort();
+    const contexts = this.selectedContexts.slice().sort();
     let response = '';
 
-    // Check for combinations first (2 contexts)
-    if (contexts.length >= 2) {
-      // Try to find a combination match
-      const key = contexts.slice(0, 2).join(',');
-      if (this.contextCombinations[key]) {
-        response = this.contextCombinations[key];
+    // Try the full combination first (most specific), then fall back to fewer clues
+    const fullKey = contexts.join(',');
+    if (this.contextCombinations[fullKey]) {
+      response = this.contextCombinations[fullKey];
+    } else if (contexts.length >= 2) {
+      // Try pairs from the end (most recently added context matters)
+      const pairKey = contexts.slice(-2).sort().join(',');
+      if (this.contextCombinations[pairKey]) {
+        response = this.contextCombinations[pairKey];
       } else {
-        // Fallback: use the last added context
         response = this.contextResponses[contexts[contexts.length - 1]];
       }
     } else if (contexts.length === 1) {
       response = this.contextResponses[contexts[0]];
     }
 
+    // Add a hint about accuracy based on number of clues
+    let prefix = '';
+    if (contexts.length === 1) {
+      prefix = "🟡 With just 1 clue, I can only guess... ";
+    } else if (contexts.length === 2) {
+      prefix = "🟠 With 2 clues, I'm more confident! ";
+    } else if (contexts.length === 3) {
+      prefix = "🟢 With 3 clues, I'm very specific! ";
+    } else if (contexts.length >= 4) {
+      prefix = "⭐ With all the clues, I know exactly! ";
+    }
+
     if (response) {
-      this.typewriterEffect(response, () => {
+      this.typewriterEffect(prefix + response, () => {
         this.markSectionComplete('context');
       });
     }
