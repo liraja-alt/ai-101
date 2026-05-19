@@ -1004,7 +1004,7 @@
 
 /* Sub-section shared styles */
 .sub-section {
-  display: flex;
+  display: none;
   flex-direction: column;
   align-items: center;
   gap: 20px;
@@ -1013,8 +1013,8 @@
   animation: fadeIn 300ms ease-out forwards;
 }
 
-.sub-section:not(.active) {
-  display: none;
+.sub-section.active {
+  display: flex;
 }
 
 .custom-question {

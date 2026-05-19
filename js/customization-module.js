@@ -384,10 +384,13 @@ class CustomizationModule {
     // Reset prompt buttons
     document.querySelectorAll('.prompt-btn').forEach(btn => btn.classList.remove('active'));
 
-    // Hide all sub-sections, then show knowledge
-    document.querySelectorAll('.sub-section').forEach(s => s.classList.remove('active'));
-    const knowledgeSection = document.querySelector('.sub-section[data-section="knowledge"]');
-    if (knowledgeSection) knowledgeSection.classList.add('active');
+    // Hide all sub-sections within the customization module only, then show knowledge
+    const customSection = document.getElementById('customization');
+    if (customSection) {
+      customSection.querySelectorAll('.sub-section').forEach(s => s.classList.remove('active'));
+      const knowledgeSection = customSection.querySelector('.sub-section[data-section="knowledge"]');
+      if (knowledgeSection) knowledgeSection.classList.add('active');
+    }
 
     // Reset tabs
     document.querySelectorAll('.custom-tab').forEach(tab => {
